@@ -22,7 +22,7 @@ public class Application {
 	}
 
 	@Bean
-	public RSQLCommonSupport rsqlCommonSupport(Map<String, EntityManager> entityManagerMap) {
+	RSQLCommonSupport rsqlCommonSupport(Map<String, EntityManager> entityManagerMap) {
 		return new RSQLCommonSupport(entityManagerMap);
 	}
 

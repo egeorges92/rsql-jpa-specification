@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RSQLJPAAutoConfiguration {
 
 	@Bean
-	public RSQLCommonSupport rsqlCommonSupport(Map<String, EntityManager> entityManagerMap) {
+	RSQLCommonSupport rsqlCommonSupport(Map<String, EntityManager> entityManagerMap) {
 		log.info("RSQLJPAAutoConfiguration.rsqlCommonSupport(entityManagerMap:{})", entityManagerMap.size());
 		return new RSQLCommonSupport(entityManagerMap);
 	}

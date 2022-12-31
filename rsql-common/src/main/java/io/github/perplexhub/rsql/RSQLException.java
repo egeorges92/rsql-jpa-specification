@@ -4,6 +4,9 @@ package io.github.perplexhub.rsql;
  * Thrown to indicate that generic problems within library. It is a superclass for all exceptions defined here.
  */
 public class RSQLException extends RuntimeException {
+
+  private static final long serialVersionUID = 8324642779354675125L;
+
   public RSQLException() {
     super();
   }

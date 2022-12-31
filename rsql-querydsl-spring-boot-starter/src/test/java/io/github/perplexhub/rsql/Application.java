@@ -21,7 +21,7 @@ public class Application {
 	}
 
 	@Bean
-	public Object rsqlConfiguration(RSQLCommonSupport rsqlCommonSupport) {
+	Object rsqlConfiguration(RSQLCommonSupport rsqlCommonSupport) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		RSQLCommonSupport.addConverter(Date.class, s -> {
 			try {

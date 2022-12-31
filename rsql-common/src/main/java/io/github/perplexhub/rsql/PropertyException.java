@@ -4,6 +4,7 @@ package io.github.perplexhub.rsql;
  * Thrown to indicate generic problem with entity property (e.g. not existing, forbidden).
  */
 public class PropertyException extends RSQLException {
+  private static final long serialVersionUID = -7438770097529988631L;
   private final String name;
   private final Class<?> type;
 

@@ -5,6 +5,8 @@ package io.github.perplexhub.rsql;
  */
 public class PropertyAccessControlException extends PropertyException {
 
+  private static final long serialVersionUID = -7250223389702651901L;
+
   public PropertyAccessControlException(String name, Class<?> type, String message) {
     super(name, type, message);
   }

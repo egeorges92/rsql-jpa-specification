@@ -75,14 +75,14 @@ public class RSQLJPAPredicateConverter extends RSQLVisitorBase<Predicate, From> 
 			} else {
 				if (!hasPropertyName(mappedProperty, classMetadata)) {
 					if (Modifier.isAbstract(classMetadata.getJavaType().getModifiers())) {
-						Optional<Class<?>> foundSubClass = (Optional<Class<?>>) new Reflections(classMetadata.getJavaType().getPackage().getName())
+						Optional<?> foundSubClass = (Optional<?>) new Reflections(classMetadata.getJavaType().getPackage().getName())
 								.getSubTypesOf(classMetadata.getJavaType())
 								.stream()
 								.filter(subType -> hasPropertyName(mappedProperty, getManagedType(subType)))
 								.findFirst();
 						if (foundSubClass.isPresent()) {
-							classMetadata = getManagedType(foundSubClass.get());
-							root = root instanceof Join ? builder.treat((Join) root, foundSubClass.get()).get(property) : builder.treat((Path) root, foundSubClass.get()).get(property);
+							classMetadata = getManagedType((Class<?>)foundSubClass.get());
+							root = root instanceof Join ? builder.treat((Join) root, (Class<?>)foundSubClass.get()).get(property) : builder.treat((Path) root, (Class<?>)foundSubClass.get()).get(property);
 							attribute = classMetadata.getAttribute(property);
 						} else {
 							throw new UnknownPropertyException(mappedProperty, classMetadata.getJavaType());
@@ -154,10 +154,6 @@ public class RSQLJPAPredicateConverter extends RSQLVisitorBase<Predicate, From> 
 		}
 
 		return RSQLJPAContext.of(root, attribute);
-	}
-
-	private String getKeyJoin(Path<?> root, String mappedProperty) {
-		return root.getJavaType().getSimpleName().concat(".").concat(mappedProperty);
 	}
 
 	protected Path<?> join(String keyJoin, Path<?> root, String mappedProperty) {

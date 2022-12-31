@@ -23,7 +23,6 @@ import cz.jirutka.rsql.parser.ast.Node;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@SuppressWarnings({ "serial" })
 public class RSQLJPASupport extends RSQLCommonSupport {
 
 	public RSQLJPASupport() {

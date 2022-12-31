@@ -21,9 +21,9 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
-	public RSQLCommonSupport rsqlCommonSupport(Map<String, EntityManager> entityManagerMap) {
-		return new RSQLCommonSupport(entityManagerMap);
-	}
+    @Bean
+    RSQLCommonSupport rsqlCommonSupport(Map<String, EntityManager> entityManagerMap) {
+        return new RSQLCommonSupport(entityManagerMap);
+    }
 
 }
